@@ -1,56 +1,88 @@
-:root {
-	--switch-size: 40px;
-}
+/* 2-styles.css */
 
+/* Reset default styles
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} */
+
+/* Style for the custom toggle */
 .toggle {
- transform: translateX(100px);
- display: flex;
-}
-.toggle-label {
-	position: relative;
-}
-
-.toggle-inner {
-	width: calc(var(--switch-size) * 2 );
-	height: 30px;
-	border: 2px solid rgb(177, 177, 177);
-	background: rgb(235,235,235);
-	border-radius: 30px;
-	color: rgb(124, 124, 124);
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-}
-
-.toggle-cb:checked + .toggle-label .toggle-inner {
-	background: rgb(225,1,60);
-	color: rgb(255, 255, 255);
-}
-
-.toggle-cb:checked + .toggle-label .toggle-switch {
-	transform: translateX( calc(var(--switch-size) * 1 ) ) translateY( calc(var(--switch-size) * -1 ));
-}
-
-.toggle-switch {
-	width: var(--switch-size);
-	height: var(--switch-size);
-	border: 2px solid darkgray;
-	background: rgb(255, 255, 255);
-	border-radius: 50%;
-	position: absolute;
-	transform: translateY( calc(var(--switch-size) * -1 ));
-}
-
-.toggle-inner::before {
-	content: "Yes";
-}
-
-.toggle-inner::after {
-	content: "No";
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 30px;
 }
 
 .toggle-cb {
-	display: none;
+  display: none; /* Hide the actual checkbox */
+}
+
+.toggle-label {
+  display: block;
+  width: 80px;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.toggle-inner {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: white;
+  transition: transform 0.2s ease, left 0.2s ease; /* Add left transition */
+  z-index: 2; /* Place content above the switch */
+}
+
+.toggle-switch {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: left 0.2s ease, background-color 0.2s ease;
+  z-index: 1; /* Place switch below the content */
+}
+
+/* Slide the switch and change background when the checkbox is checked */
+.toggle-cb:checked + .toggle-label .toggle-switch {
+  left: calc(100% - 29px);
+}
+
+.toggle-cb:checked + .toggle-label {
+  background-color: #d73953;
+}
+
+/* Style for the text inside the toggle */
+.toggle-label::before {
+  content: 'No'; /* Default text */
+  display: inline-block;
+  position: absolute;
+  font-size: 1.2rem;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  z-index: 2; /* Place content above the switch */
+}
+
+/* Update text when the checkbox is checked */
+.toggle-cb:checked + .toggle-label::before {
+  content: 'Yes';
+  color: white;
+  left: 5px; /* Position to the left when "Yes" */
+  transform: translateY(-50%);
+  font-size: 1.2rem;
 }

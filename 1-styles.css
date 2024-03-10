@@ -1,30 +1,41 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-h2 {
-    margin: 10px 5px;
-    position: relative;
+h2 a {
+  color: #d73953;
 }
 
 a {
-    text-decoration: none;
-    color: #8a153a;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Create the moving underline effect using a pseudo-element */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0; /* Initial width is zero */
+  height: 3px;
+  background-color: #d73953;
+  transition: width 0.3s ease; /* Add a smooth transition to the width */
+}
+
+a:hover::after {
+  width: 100%; /* Expand the width to 100% */
 }
 
 a::before {
-    content: "";
-    position: absolute;
-    text-decoration: none;
-    background-color: #8a153a;
-    height: 3px;
-    transform: translateY(2.2ex);
-    transition: .5s ease-out;
-    transform-origin: left;
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Position the underline below the text */
+  left: 100%; /* Initial position is at the right end */
+  width: 0; /* Initial width is zero */
+  background-color: #d73953;
+  transition: left 0.3s ease, width 0.3s ease; /* Add transitions for left and width */
+  visibility: hidden; /* Initially hidden */
 }
 
 a:hover::before {
-    width: 9.5ch;
+  left: 0; /* Move the underline to the left */
+  width: 100%; /* Expand the width to 100% */
+  visibility: visible; /* Show the underline */
 }
