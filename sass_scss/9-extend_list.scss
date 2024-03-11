@@ -1,0 +1,15 @@
+// Apply font size 12px to all tags of class .info
+.info {
+  font-size: 12px;
+}
+
+// Extend style of class .info for .success and .warning
+.success {
+  @extend .info;
+  color: #00FF00;
+}
+
+.warning {
+  @extend .info;
+  color: #FF0000;
+}

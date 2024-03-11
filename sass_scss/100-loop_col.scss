@@ -1,0 +1,10 @@
+// Loop through widths from 1 to 4
+@for $i from 1 through 4 {
+  // Calculate width based on the loop index
+  $width: 100% / $i;
+
+  // Create .col-* classes with calculated width
+  .col-#{$i} {
+    width: $width;
+  }
+}

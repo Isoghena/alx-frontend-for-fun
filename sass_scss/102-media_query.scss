@@ -1,0 +1,30 @@
+// Font size 20px for h1 tags
+h1 {
+  font-size: 20px;
+}
+
+// Font size 18px for h1 tags when screen width is smaller than 960px
+@media screen and (max-width: 960px) {
+  h1 {
+    font-size: 18px;
+  }
+}
+
+// Font size 16px for h1 tags when screen width is smaller than 640px
+@media screen and (max-width: 640px) {
+  h1 {
+    font-size: 16px;
+  }
+}
+
+// Font size 14px for h1 tags when screen width is smaller than 320px
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 14px;
+  }
+
+  // Text color #1D1D1D for h1.small tags when screen width is smaller than 320px
+  h1.small {
+    color: #1D1D1D;
+  }
+}
