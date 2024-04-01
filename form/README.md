@@ -1,2 +1,1 @@
-# alx-frontend-for-fun
-A school project
+my project
